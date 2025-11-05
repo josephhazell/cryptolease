@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Builds
+contracts/artifacts/
+contracts/cache/
+frontend/.next/
+frontend/out/
+
+# Env
+.env
+.env.*
+
+# OS
+.DS_Store
+
+# Logs
+*.log
