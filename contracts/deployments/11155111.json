@@ -1,0 +1,6 @@
+{
+  "chainId": 11155111,
+  "network": "sepolia",
+  "TenancyIndex": "0xb15Da158624272e60e6cB33A58456b2C575d40f8",
+  "RentVault": "0x3A635Ec48F9791a414cFB1a1C572F14c93013dFd"
+}
