@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #10b981; /* emerald-500 */
+  --accent: #f59e0b;  /* amber-500 */
+  --dark-bg: #0a0e1a;
+  --card-bg: #111827;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+/* Cyberpunk neon glow animations */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5), 0 0 10px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.5), 0 0 40px rgba(16, 185, 129, 0.3); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@layer components {
+  .card {
+    @apply relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl border-2 border-emerald-500/30 shadow-2xl p-6 transition-all duration-300;
+  }
+  .card:hover {
+    @apply border-emerald-400/50 shadow-emerald-500/20;
+    transform: translateY(-2px);
+  }
+  
+  .card-dark {
+    @apply bg-black/40 backdrop-blur-xl rounded-2xl border border-amber-500/20 p-5 shadow-xl;
+  }
+
+  .input-field {
+    @apply w-full px-5 py-4 rounded-2xl bg-black/60 text-emerald-50 border-2 border-emerald-500/30 focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/20 outline-none transition-all placeholder-gray-500 font-mono;
+  }
+  .input-field:focus {
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-emerald-900/50 hover:shadow-2xl hover:shadow-emerald-700/60 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider;
+  }
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  .btn-primary:hover::before {
+    transform: translateX(100%);
+  }
+
+  .btn-accent {
+    @apply relative bg-gradient-to-r from-amber-600 to-orange-500 text-gray-900 px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-xl hover:from-amber-500 hover:to-orange-400 active:scale-95 transition-all disabled:opacity-50 uppercase tracking-wide;
+  }
+
+  .btn-glass {
+    @apply bg-white/10 backdrop-blur-md text-emerald-100 px-6 py-3 rounded-xl font-semibold border border-white/20 hover:bg-white/20 hover:border-emerald-400/50 transition-all;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider;
+  }
+  .badge-success {
+    @apply bg-emerald-500/20 text-emerald-300 border border-emerald-500/50;
+  }
+  .badge-warning {
+    @apply bg-amber-500/20 text-amber-300 border border-amber-500/50;
+  }
+
+  .section-title {
+    @apply text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 mb-6 uppercase tracking-tight;
+  }
+
+  .label {
+    @apply block text-sm font-bold text-emerald-300 mb-2 uppercase tracking-wide;
+  }
+
+  /* Sidebar styles */
+  .sidebar-item {
+    @apply flex items-center space-x-3 px-6 py-4 text-gray-300 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all cursor-pointer rounded-xl border-l-4 border-transparent hover:border-emerald-400;
+  }
+  .sidebar-item.active {
+    @apply text-emerald-400 bg-emerald-500/20 border-emerald-400;
+  }
+
+  /* Glow text */
+  .glow-text {
+    @apply text-emerald-400;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.8), 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+
+  /* Panel styles */
+  .panel {
+    @apply bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-xl rounded-3xl border-2 border-emerald-500/20 p-8 shadow-2xl;
+  }
+
+  /* Accent border */
+  .accent-border {
+    @apply border-l-4 border-amber-500 pl-4;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #10b981, #059669);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+}
